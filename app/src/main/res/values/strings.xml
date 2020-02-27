@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">kLoja</string>
+    <string name="metodo_pag">Selecione Método de Pagamento</string>
+    <string name="cle">Cle</string>
+    <string name="pagar">Pagar</string>
 </resources>
