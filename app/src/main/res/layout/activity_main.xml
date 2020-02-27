@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#17212c"
+    android:background="@drawable/backgroundgradient"
     tools:context=".MainActivity"
     android:id="@+id/Main"
     >
@@ -27,9 +27,10 @@
             app:layout_constraintVertical_bias="0.0" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_weight="2"
             android:orientation="horizontal">
 
             <Button
