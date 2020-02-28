@@ -77,8 +77,6 @@ class RecyclerViewAdapter(
 
             holder.itemView.mark?.text = ArrayClicks[position].toString()
 
-            holder.itemView.price?.text = ArrayCard[position].mPrice.toString()
-
 
             Toast.makeText(context,ArrayCard[position].mName, Toast.LENGTH_SHORT).show()
 
@@ -98,7 +96,6 @@ class RecyclerViewAdapter(
         var image: CircleImageView = itemView.image
         var name: TextView = itemView.name
         var mark = itemView.mark
-        var price = itemView.price
 
     }
 
