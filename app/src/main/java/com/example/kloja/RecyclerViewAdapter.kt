@@ -9,20 +9,20 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.kloja.models.Card_Model
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.layout_listitem.view.*
 
 
 class RecyclerViewAdapter(
     private val context: Context,
-    private val mNames: ArrayList<String>,
-    private val imagesURLs: ArrayList<String>,
+    private val ArrayCard: ArrayList<Card_Model> ,
     private var ArrayClicks: ArrayList<Int>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 
     init {
-        for (i in imagesURLs){
+        for (i in ArrayCard){
             ArrayClicks.add(0)
         }
     }
@@ -40,7 +40,7 @@ class RecyclerViewAdapter(
     }
 
     override fun getItemCount(): Int {
-        return this.imagesURLs.size
+        return this.ArrayCard.size
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
@@ -53,16 +53,16 @@ class RecyclerViewAdapter(
         Glide.with(context)
             .asBitmap()
             .placeholder(R.drawable.ic_launcher_background)
-            .load(imagesURLs[position])
+            .load(ArrayCard[position].mImageUrl)
             .into(holder.itemView.image)
 
-        holder.itemView.name.text = mNames[position]
+        holder.itemView.name.text = ArrayCard[position].mName
 
 
         holder.itemView.image.setOnClickListener {
 
 
-            Log.d(TAG, "onClick, clicked on an image : " + imagesURLs[position])
+            Log.d(TAG, "onClick, clicked on an image : " + ArrayCard[position].mImageUrl)
 
 
             ArrayClicks[position]++
@@ -74,10 +74,13 @@ class RecyclerViewAdapter(
             else{
                 holder.itemView.mark?.visibility = View.INVISIBLE
             }
+
             holder.itemView.mark?.text = ArrayClicks[position].toString()
 
+            holder.itemView.price?.text = ArrayCard[position].mPrice.toString()
 
-            Toast.makeText(context, mNames[position], Toast.LENGTH_SHORT).show()
+
+            Toast.makeText(context,ArrayCard[position].mName, Toast.LENGTH_SHORT).show()
 
 
 
@@ -95,6 +98,7 @@ class RecyclerViewAdapter(
         var image: CircleImageView = itemView.image
         var name: TextView = itemView.name
         var mark = itemView.mark
+        var price = itemView.price
 
     }
 

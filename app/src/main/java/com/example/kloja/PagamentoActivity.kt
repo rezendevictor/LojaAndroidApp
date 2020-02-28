@@ -20,12 +20,12 @@ class PagamentoActivity : AppCompatActivity(){
         Dinheiro.setOnClickListener {
 
 
-            Toast.makeText(this, "Debito", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Dinheiro", Toast.LENGTH_SHORT).show()
         }
 
         Credito.setOnClickListener {
 
-            Toast.makeText(this, "Debito", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Credito", Toast.LENGTH_SHORT).show()
         }
 
 
