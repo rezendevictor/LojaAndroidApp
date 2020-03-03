@@ -17,6 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".PagamentoActivity"/>
+        <activity android:name=".DiskActivity"/>
+        <activity android:name=".SecondActivity"/>
     </application>
 
 </manifest>
