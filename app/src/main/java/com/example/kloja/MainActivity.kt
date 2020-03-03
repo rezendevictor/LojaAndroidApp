@@ -1,6 +1,5 @@
 package com.example.kloja
 
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.view.MotionEvent
@@ -15,7 +14,7 @@ import org.jetbrains.anko.startActivity
 class MainActivity : AppCompatActivity() {
 
     private var utils = LojaUtils()
-    
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_entrada)
@@ -24,6 +23,10 @@ class MainActivity : AppCompatActivity() {
             startActivity<DiskActivity>()
 
         }
+
+
+
+
 
         tela1.setOnTouchListener { v: View,
                                    m: MotionEvent ->
