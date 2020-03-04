@@ -1,16 +1,20 @@
 package com.example.kloja.utils
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
+import android.view.LayoutInflater
 import android.view.MotionEvent
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat.startActivity
+import com.example.kloja.R
+
 
 
 class LojaUtils {
 
-    var result: Boolean = false
     var x2: Float = 0F
     var click1: Float = 0F
 
@@ -25,18 +29,15 @@ class LojaUtils {
                 if (direita) {
 
                     if (click1 > x2) {
-                        changeCheck(context,intent)
+                        changeCheck(context, intent)
                     }
                 } else {
                     if (click1 < x2)
-                        changeCheck(context,intent)
+                        changeCheck(context, intent)
                 }
+
             }
-
-
         }
-
-
     }
 
     private fun changeCheck(context: Context, intent: Intent) {
@@ -45,12 +46,30 @@ class LojaUtils {
             .setTitle("Mudar de Aplicação")
             .setMessage("Voce quer mudar de aplicação?")
             .setPositiveButton("Sim") { dialogInterface: DialogInterface, i: Int ->
-                startActivity(context, intent,null)
+                startActivity(context, intent, null)
+                var activity = context as Activity
+                ActivityCompat.finishAfterTransition(activity)
             }.setNegativeButton("não", null).show()
+    }
 
-
+    fun alertCustomizedLayout(context: Context,intent: Intent) {
+        val builder =
+            AlertDialog.Builder(context)
+        // get the layout inflater
+        val inflater =
+            context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        // inflate and set the layout for the dialog
+        // pass null as the parent view because its going in the dialog layout
+        builder.setView(inflater.inflate(R.layout.dialog_appchange, null)) // action buttons
+            .setPositiveButton("Sim") { dialogInterface: DialogInterface, i: Int ->
+                startActivity(context, intent, null)
+                var activity = context as Activity
+                ActivityCompat.finishAfterTransition(activity)
+            }.setNegativeButton("não", null).show()
     }
 
 
 }
+
+
 

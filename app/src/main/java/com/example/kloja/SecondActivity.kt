@@ -16,6 +16,7 @@ class SecondActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_entrada2)
 
+
         tela2.setOnTouchListener{ v : View,
                                   m : MotionEvent ->
 

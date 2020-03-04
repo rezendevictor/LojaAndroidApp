@@ -3,4 +3,5 @@
     <string name="metodo_pag">Selecione Método de Pagamento</string>
     <string name="cle">Cle</string>
     <string name="pagar">Pagar</string>
+    <string name="tem_certeza_que_quer_mudar_de_aplica_o">Tem certeza que quer mudar de aplicação?</string>
 </resources>

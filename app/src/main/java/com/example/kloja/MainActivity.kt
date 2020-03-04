@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.example.kloja.utils.LojaUtils
 import kotlinx.android.synthetic.main.activity_entrada.*
@@ -24,26 +23,18 @@ class MainActivity : AppCompatActivity() {
 
         }
 
-
-
-
-
         tela1.setOnTouchListener { v: View,
                                    m: MotionEvent ->
 
-            utils.OnTouchEvent(this,m,
-                Intent(this,SecondActivity::class.java),true
+            utils.OnTouchEvent(
+                this, m,
+                Intent(this, SecondActivity::class.java), true
             )
+
             true
         }
 
 
     }
-
-
-
-
-
-
 
 }
