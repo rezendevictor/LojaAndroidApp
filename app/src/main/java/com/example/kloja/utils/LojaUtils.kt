@@ -7,10 +7,11 @@ import android.content.DialogInterface
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.MotionEvent
+import android.view.View
+import android.widget.Button
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat.startActivity
 import com.example.kloja.R
-
 
 
 class LojaUtils {
@@ -29,11 +30,11 @@ class LojaUtils {
                 if (direita) {
 
                     if (click1 > x2) {
-                        changeCheck(context, intent)
+                        alertCustomizedLayout(context, intent)
                     }
                 } else {
                     if (click1 < x2)
-                        changeCheck(context, intent)
+                        alertCustomizedLayout(context, intent)
                 }
 
             }
@@ -53,20 +54,36 @@ class LojaUtils {
     }
 
     fun alertCustomizedLayout(context: Context,intent: Intent) {
-        val builder =
-            AlertDialog.Builder(context)
-        // get the layout inflater
+        val dialogBuilder = AlertDialog.Builder(context).create()
         val inflater =
             context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        // inflate and set the layout for the dialog
-        // pass null as the parent view because its going in the dialog layout
-        builder.setView(inflater.inflate(R.layout.dialog_appchange, null)) // action buttons
-            .setPositiveButton("Sim") { dialogInterface: DialogInterface, i: Int ->
+
+        val dialogView: View = inflater.inflate(R.layout.dialog_appchange, null)
+
+        val no: Button = dialogView.findViewById(R.id.buttonNo) as Button
+        val yes: Button = dialogView.findViewById(R.id.buttonYes) as Button
+
+
+
+        no.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(view: View?) {
+                dialogBuilder.dismiss()
+            }
+        })
+        yes.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(view: View?) { // DO SOMETHINGS
+                dialogBuilder.dismiss()
                 startActivity(context, intent, null)
                 var activity = context as Activity
                 ActivityCompat.finishAfterTransition(activity)
-            }.setNegativeButton("não", null).show()
+            }
+        })
+
+        dialogBuilder.setView(dialogView)
+        dialogBuilder.show()
     }
+
+
 
 
 }
