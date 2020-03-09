@@ -7,6 +7,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.kloja.utils.LojaUtils
 import kotlinx.android.synthetic.main.activity_entrada2.*
+import org.jetbrains.anko.startActivity
 
 class SecondActivity : AppCompatActivity() {
 
@@ -17,12 +18,17 @@ class SecondActivity : AppCompatActivity() {
         setContentView(R.layout.activity_entrada2)
 
 
-        tela2.setOnTouchListener{ v : View,
-                                  m : MotionEvent ->
+        goSecondButton.setOnClickListener {
+            startActivity<StocksActivity>()
+        }
+
+        tela2.setOnTouchListener { v: View,
+                                   m: MotionEvent ->
 
 
-            utils.OnTouchEvent(this,m,
-                Intent(this,MainActivity::class.java),false
+            utils.OnTouchEvent(
+                this, m,
+                Intent(this, MainActivity::class.java), false
             )
             true
         }

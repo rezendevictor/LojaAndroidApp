@@ -31,8 +31,6 @@ class RecyclerViewAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.layout_listitem, parent, false)
-
-
         return ViewHolder(view)
 
 
@@ -46,8 +44,6 @@ class RecyclerViewAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val TAG = "RecyclerViewAdapter"
         Log.d(TAG, "onBindViewHolder, called.")
-
-
 
 
         Glide.with(context)
