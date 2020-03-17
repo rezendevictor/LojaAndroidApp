@@ -5,10 +5,16 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.Path
+import retrofit2.http.Query
+import java.util.*
 
 interface RetrofitConfig {
 
-   @GET("query?function=CURRENCY_EXCHANGE_RATE&from_currency={from_EXC}" +
-           "&to_currency={to_EXC}&apikey=V2M7T3DPN0USL9LB")
-   suspend fun getMoeda(@Path("from_EXC") from : String,@Path("to_EXC") to : String) : Response<Moeda>
+   @GET("/query")
+   suspend fun getMoeda(
+      @Query("function") function: String,
+      @Query("from_currency") from: String,
+      @Query("to_currency") to: String,
+      @Query("apikey") apikey: String
+   ): Call<Moeda>
 }
