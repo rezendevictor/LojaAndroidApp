@@ -11,6 +11,7 @@
     </data>
 
     <RelativeLayout
+        android:id="@+id/Item_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
@@ -52,6 +53,8 @@
                     android:autoSizeMinTextSize="8sp"
                     android:autoSizeTextType="uniform"
                     android:gravity="center"
+                    android:textStyle="bold"
+                    android:textColor="@android:color/black"
                     android:text="Teste" />
 
 

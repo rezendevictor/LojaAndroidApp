@@ -1,19 +1,21 @@
 package com.example.kloja
 
 import android.content.Context
-import android.os.Parcel
-import android.os.Parcelable
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.kloja.API.Moeda
 import kotlinx.android.synthetic.main.layout_liststocks.view.*
+
 
 class RecyclerViewAdapterStocks(
     private val context: Context,
-    private val money: ArrayList<String>
+    private val money: ArrayList<Moeda>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+
+
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -30,12 +32,22 @@ class RecyclerViewAdapterStocks(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+
         val TAG = "RecyclerViewAdapter"
         Log.d(TAG, "onBindViewHolder, called.")
 
-        holder.itemView.name.text = money[position]
-        holder.itemView.code.text = money[position]
-        holder.itemView.rate.text = money[position]
+        try {
+
+                holder.itemView.name.text = money[position].rate.To_currency_Name
+                holder.itemView.code.text = money[position].rate.To_currency_Code
+                holder.itemView.rate.text = money[position].rate.Exchange_rate.toString()
+
+
+    }catch (e: Exception){
+        var ex = e.message
+        System.out.println(ex);
+
+    }
 
 
     }

@@ -19,7 +19,6 @@ import java.util.EnumSet.range
 
 class DiskActivity : AppCompatActivity() {
 
-    var ArrayClicks = arrayListOf(0)
     var ArrayCard = arrayListOf<Card_Model>()
 
 
@@ -33,10 +32,10 @@ class DiskActivity : AppCompatActivity() {
             pagar.setOnClickListener { startActivity<PagamentoActivity>() }
 
             clear.setOnClickListener {
-                ArrayClicks.clear()
+                for (x in ArrayCard){
+                    x.clicks = 0
+                }
                 initRecyclerView()
-
-
             }
 
 
@@ -52,14 +51,36 @@ class DiskActivity : AppCompatActivity() {
 
     private fun getImages() {
 
-        ArrayCard.add(Card_Model("David Bowie","https://coverartworks.com/shop/unseen-presence/",0))
-        ArrayCard.add(Card_Model("David Bowie","https://coverartworks.com/shop/unseen-presence/",0))
-        ArrayCard.add(Card_Model("David Bowie","https://coverartworks.com/shop/unseen-presence/",0))
-        ArrayCard.add(Card_Model("David Bowie","https://coverartworks.com/shop/unseen-presence/",0))
-        ArrayCard.add(Card_Model("David Bowie","https://coverartworks.com/shop/unseen-presence/",0))
-        ArrayCard.add(Card_Model("David Bowie","https://coverartworks.com/shop/unseen-presence/",0))
-        ArrayCard.add(Card_Model("David Bowie","https://coverartworks.com/shop/unseen-presence/",0))
-
+        ArrayCard.add(Card_Model("Thriller","https://www.digitalmusicnews.com/wp-content/uploads/2017/02/jackson_thriller-1.jpg",0))
+        ArrayCard.add(Card_Model("Appetite for Destruction","https://www.digitalmusicnews.com/wp-content/uploads/2017/02/gnrappetitefordestruction.jpg",0))
+        ArrayCard.add(Card_Model(" Metallica","https://www.digitalmusicnews.com/wp-content/uploads/2017/02/Metallica_-_Metallica_cover.jpg",0))
+        ArrayCard.add(Card_Model("…Baby One More Time","https://www.digitalmusicnews.com/wp-content/uploads/2017/02/spearsonemoretime.png",0))
+        ArrayCard.add(Card_Model("Slippery When Wet","https://www.digitalmusicnews.com/wp-content/uploads/2017/02/Bon_jovi_slippery_when_wet.jpg",0))
+        ArrayCard.add(Card_Model( "The Woman In Me","https://www.digitalmusicnews.com/wp-content/uploads/2017/02/Shania_Twain_-_The_Woman_in_Me.png",0))
+        ArrayCard.add(Card_Model("James Taylor’s Greatest Hits","https://www.digitalmusicnews.com/wp-content/uploads/2017/02/James_Taylor_-_Greatest_Hits.jpg",0))
+        ArrayCard.add(Card_Model("‘N Sync","https://www.digitalmusicnews.com/wp-content/uploads/2017/02/nsync.jpg",0))
+        ArrayCard.add(Card_Model("Pyromania","https://www.digitalmusicnews.com/wp-content/uploads/2017/02/Def_Leppard_-_Pyromania.jpg",0))
+        ArrayCard.add(Card_Model("Sevens","https://www.digitalmusicnews.com/wp-content/uploads/2017/02/sevens.jpg",0))
+        ArrayCard.add(Card_Model("Thriller","https://www.digitalmusicnews.com/wp-content/uploads/2017/02/jackson_thriller-1.jpg",0))
+        ArrayCard.add(Card_Model("Appetite for Destruction","https://www.digitalmusicnews.com/wp-content/uploads/2017/02/gnrappetitefordestruction.jpg",0))
+        ArrayCard.add(Card_Model(" Metallica","https://www.digitalmusicnews.com/wp-content/uploads/2017/02/Metallica_-_Metallica_cover.jpg",0))
+        ArrayCard.add(Card_Model("…Baby One More Time","https://www.digitalmusicnews.com/wp-content/uploads/2017/02/spearsonemoretime.png",0))
+        ArrayCard.add(Card_Model("Slippery When Wet","https://www.digitalmusicnews.com/wp-content/uploads/2017/02/Bon_jovi_slippery_when_wet.jpg",0))
+        ArrayCard.add(Card_Model( "The Woman In Me","https://www.digitalmusicnews.com/wp-content/uploads/2017/02/Shania_Twain_-_The_Woman_in_Me.png",0))
+        ArrayCard.add(Card_Model("James Taylor’s Greatest Hits","https://www.digitalmusicnews.com/wp-content/uploads/2017/02/James_Taylor_-_Greatest_Hits.jpg",0))
+        ArrayCard.add(Card_Model("‘N Sync","https://www.digitalmusicnews.com/wp-content/uploads/2017/02/nsync.jpg",0))
+        ArrayCard.add(Card_Model("Pyromania","https://www.digitalmusicnews.com/wp-content/uploads/2017/02/Def_Leppard_-_Pyromania.jpg",0))
+        ArrayCard.add(Card_Model("Sevens","https://www.digitalmusicnews.com/wp-content/uploads/2017/02/sevens.jpg",0))
+        ArrayCard.add(Card_Model("Thriller","https://www.digitalmusicnews.com/wp-content/uploads/2017/02/jackson_thriller-1.jpg",0))
+        ArrayCard.add(Card_Model("Appetite for Destruction","https://www.digitalmusicnews.com/wp-content/uploads/2017/02/gnrappetitefordestruction.jpg",0))
+        ArrayCard.add(Card_Model(" Metallica2","https://www.digitalmusicnews.com/wp-content/uploads/2017/02/Metallica_-_Metallica_cover.jpg",0))
+        ArrayCard.add(Card_Model("…Baby One More Time2","https://www.digitalmusicnews.com/wp-content/uploads/2017/02/spearsonemoretime.png",0))
+        ArrayCard.add(Card_Model("Slippery When Wet2","https://www.digitalmusicnews.com/wp-content/uploads/2017/02/Bon_jovi_slippery_when_wet.jpg",0))
+        ArrayCard.add(Card_Model( "The Woman In Me2","https://www.digitalmusicnews.com/wp-content/uploads/2017/02/Shania_Twain_-_The_Woman_in_Me.png",0))
+        ArrayCard.add(Card_Model("James Taylor’s Greatest Hits2","https://www.digitalmusicnews.com/wp-content/uploads/2017/02/James_Taylor_-_Greatest_Hits.jpg",0))
+        ArrayCard.add(Card_Model("‘N Sync2","https://www.digitalmusicnews.com/wp-content/uploads/2017/02/nsync.jpg",0))
+        ArrayCard.add(Card_Model("Pyromania2","https://www.digitalmusicnews.com/wp-content/uploads/2017/02/Def_Leppard_-_Pyromania.jpg",0))
+        ArrayCard.add(Card_Model("Sevens2","https://www.digitalmusicnews.com/wp-content/uploads/2017/02/sevens.jpg",0))
 
         initRecyclerView()
     }
@@ -70,7 +91,7 @@ class DiskActivity : AppCompatActivity() {
 
         val recicle = recyclerView
         recicle.layoutManager = GridLayoutManager(this,3)
-        val adapter = RecyclerViewAdapter(this,ArrayCard,ArrayClicks)
+        val adapter = RecyclerViewAdapter(this,ArrayCard)
         recicle.adapter = adapter
 
     }

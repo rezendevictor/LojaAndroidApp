@@ -1,26 +1,37 @@
 package com.example.kloja.API
 
-import org.patriques.*
 
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
+import okhttp3.logging.HttpLoggingInterceptor.*
+import retrofit2.Retrofit
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory
+import retrofit2.converter.gson.GsonConverterFactory
 
 
 class API_consume {
-    val api = apiConnect()
-    val currencyRate = api.foreignExchange.currencyExchangeRate("USD", "SEK")
-    val currencyExchangeData = this.currencyRate.data
 
 
-    fun getInfos() {
-        try {
-            var code = currencyExchangeData.getFromCurrencyCode()
-            var name = currencyExchangeData.getFromCurrencyName()
-            var tocurrency = currencyExchangeData.getToCurrencyCode()
-            var currencyName = currencyExchangeData.getToCurrencyName()
-            var curencyRate = currencyExchangeData.getExchangeRate()
-            var time = currencyExchangeData.getTime()
-        } catch (e: Exception) {
-            print("Não Funcionou")
-        }
+    fun get_moeda(): RetrofitConfig {
+
+
+        var interceptor = HttpLoggingInterceptor()
+            .setLevel(Level.BODY)
+
+        var client = OkHttpClient.Builder()
+            .addInterceptor(interceptor).build()
+
+
+        var retro = Retrofit.Builder()
+            .baseUrl("https://www.alphavantage.co/")
+            .client(client)
+            .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        return retro.create(RetrofitConfig::class.java)
+
     }
-
 }
+
+

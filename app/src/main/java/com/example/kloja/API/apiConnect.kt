@@ -1,16 +1,10 @@
 package com.example.kloja.API
 
-import org.patriques.AlphaVantageConnector
-import org.patriques.ForeignExchange
 
 class apiConnect {
 
-        val apiKey = "50M3AP1K3Y";
+        val apiKey = "V2M7T3DPN0USL9LB";
         val timeout = 3000;
-        val apiConnector = AlphaVantageConnector(apiKey, timeout);
-        val foreignExchange = ForeignExchange(apiConnector)
-
-
 }
 
 fun moneys(): ArrayList<String>{

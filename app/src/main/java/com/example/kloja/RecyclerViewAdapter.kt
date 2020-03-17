@@ -16,23 +16,14 @@ import kotlinx.android.synthetic.main.layout_listitem.view.*
 
 class RecyclerViewAdapter(
     private val context: Context,
-    private val ArrayCard: ArrayList<Card_Model> ,
-    private var ArrayClicks: ArrayList<Int>
+    private val ArrayCard: ArrayList<Card_Model>
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
-
-
-    init {
-        for (i in ArrayCard){
-            ArrayClicks.add(0)
-        }
-    }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view =
             LayoutInflater.from(parent.context).inflate(R.layout.layout_listitem, parent, false)
         return ViewHolder(view)
-
 
 
     }
@@ -42,9 +33,6 @@ class RecyclerViewAdapter(
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val TAG = "RecyclerViewAdapter"
-        Log.d(TAG, "onBindViewHolder, called.")
-
 
         Glide.with(context)
             .asBitmap()
@@ -54,34 +42,18 @@ class RecyclerViewAdapter(
 
         holder.itemView.name.text = ArrayCard[position].mName
 
-
-        holder.itemView.image.setOnClickListener {
-
-
-            Log.d(TAG, "onClick, clicked on an image : " + ArrayCard[position].mImageUrl)
-
-
-            ArrayClicks[position]++
-
-
-
-            if (ArrayClicks[position]>0)
+        holder.itemView.Item_layout.setOnClickListener {
+            ArrayCard[position].clicks++
+            holder.itemView.mark?.text = ArrayCard[position].clicks.toString()
             holder.itemView.mark?.visibility = View.VISIBLE
-            else{
-                holder.itemView.mark?.visibility = View.INVISIBLE
-            }
-
-            holder.itemView.mark?.text = ArrayClicks[position].toString()
-
-
-            Toast.makeText(context,ArrayCard[position].mName, Toast.LENGTH_SHORT).show()
-
-
-
-
-
         }
 
+        holder.itemView.mark?.text = ArrayCard[position].clicks.toString()
+        if (ArrayCard[position].clicks<=0){
+            holder.itemView.mark?.visibility = View.INVISIBLE
+        }else{
+            holder.itemView.mark?.visibility = View.VISIBLE
+        }
 
     }
 
@@ -92,7 +64,7 @@ class RecyclerViewAdapter(
         var image: CircleImageView = itemView.image
         var name: TextView = itemView.name
         var mark = itemView.mark
-
+        var fulllayouy = itemView.Item_layout
     }
 
 }
